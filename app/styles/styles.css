@@ -1,0 +1,47 @@
+.brewery-main {
+	display: inline-block;
+	float: left;
+	border: 2px solid #c9d0db;
+	margin: 10px 15px;
+	width: 369px;
+	border-radius: 5px
+}
+
+.info-spans {
+	margin: 0 auto;
+}
+
+img {
+	width: 350px;
+	height: 100px;
+}
+
+.image-wrapper {
+    position: relative;
+    padding-bottom: 28%;
+    /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 350px;
+    z-index: 10;
+}
+
+.match-btn {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.match-container {
+	/*border: 2px solid #ed97e1;
+	border-radius: 5px;*/
+	/*max-width: 25%;*/
+	float: left;
+	margin-left: 43px;
+}

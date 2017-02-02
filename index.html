@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brewery Love App</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="mainController as vm">
+    <div class='container'>
+    <h1>Brewery Finder with Love</h1>
+    <h3>Get Matched with a Local Brewery!</h3>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="container">
+	<div class="row">
+        <div class="col-md-6">
+    		<h3>Enter Your City</h3>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" ng-model="searchCity" placeholder="Search"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" ng-click="vm.searchBrew(searchCity)" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                        
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<div class="container match-container" ng-show="vm.result">
+    <h4>Your Name: {{vm.result.fname}}</h4>
+    <h4>Brewery Name: {{vm.result.sname}}
+    <h4>{{vm.result.percentage}}% Match!</h4>
+    <h4>{{vm.result.result}} <i class="glyphicon glyphicon-heart"></i></h4>
+</div>
+
+<!-- Map Div -->
+<div id='map'>
+</div>
+
+<!-- Brewery Panels -->
+<div class="brewery-main col-md-3" ng-repeat="x in vm.breweries">
+    <h4 ng-bind="x.brewery.name"></h4>
+    <div class="img-wrapper">
+        <img src="{{x.brewery.images.medium}}" alt="Brewery Logo">
+    </div>
+    <div class="info-spans">
+        <span ng-bind="x.streetAddress"></span><br/>
+        <span >{{x.locality}} {{x.postalCode}}</span><br/>
+        <span ng-bind="x.phone"></span><br/>
+        <a href="{{x.website}}" target='_blank'>Website</a><br/>
+        <input type="text" class="input-sm" ng-model="name" placeholder="Your Name">
+        <button class="btn btn-info match-btn" ng-click="vm.testMatch(name, x.brewery.name)" type="button">Get Matched
+            <i class="glyphicon glyphicon-heart"></i>
+        </button>
+    </div>
+    
+</div>
+
+
+
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="/app/app.js"></script>
+    <script src="/app/beer.service.js"></script>
+    <script src="/app/main.controller.js"></script>
+    <!-- endinject -->
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlxpIuKkOleaa4rgNQsnxqJVgrv0vxnzc&callback=initMap"></script> -->
+</body>
+
+</html>
